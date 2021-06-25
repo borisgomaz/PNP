@@ -2,6 +2,7 @@
 import re
 import pandas as pd
 from Bio import PDB
+
 f = open('4tta.tsv')
 result = []
 for n in f.readlines():
@@ -16,7 +17,8 @@ for n in f.readlines():
         result.append(r.groupdict())
 #df = pd.DataFrame(result)
 
-parser = PDB.PDBParser()
+#To ignore warnings: QUIET=True
+parser = PDB.PDBParser(QUIET=True)
 pdb = '../4tta.pdb'
 structure = parser.get_structure('4tta', pdb)
 for res in result:
